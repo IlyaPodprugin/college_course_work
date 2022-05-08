@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'user/css/login.css' %}">
+{% endblock %}
+{% block title %}Log in{% endblock %}
+{% block content %}
+    <div class="login-box">
+        <h2>Войти</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="user-box">
+                <input type="text" name="username" required="">
+                <label>Имя</label>
+            </div>
+            <div class="user-box">
+                <input type="password" name="password" required="">
+                <label>Пароль</label>
+            </div>
+            <p>Ещё нет аккаунта? <a href='{% url 'signup_page' %}' class="link">Создать</a></p>
+            <button type="submit" class="animated-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Войти
+            </button>
+        </form>
+    </div>
+{% endblock %}

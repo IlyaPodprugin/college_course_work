@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Добро пожаловать в CoolQuiz</h1>
+<p>Место, где ты можешь проверить свои знания в увлекательных викторинах</p>
+<div class="mt-3">
+  {% for quiz in quizzes %}
+  <img src="{{ quiz.img_url_id.quiz_banner_url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ quiz.title }}
+      {% if quiz.level_id.level_title == "Easy" %}
+      <span class="badge bg-success">{{ quiz.level_id.level_title }}</span>
+      {% elif quiz.level_id.level_title == "Medium" %}
+      <span class="badge bg-warning text-dark">{{ quiz.level_id.level_title }}</span>
+      {% elif quiz.level_id.level_title == "Hard" %}
+      <span class="badge bg-danger">{{ quiz.level_id.level_title }}</span>
+      {% endif %}
+    </h5>
+    <p class="card-text">{{ quiz.summary }}</p>
+    <a href="{% url 'quiz_slug' quiz.slug %}" class="btn btn-primary mb-3">Играть</a>
+    <p class="card-text"><small class="text-muted">{{ quiz.updated_at|date:"d.m.Y" }}</small></p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

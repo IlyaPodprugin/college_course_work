@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "button.css";
+
+:root {
+    --secondary-btn-color: #ff61d8;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    color: #569cfa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(#141e30, #243b55);
+    font-family: 'Raleway', sans-serif;
+}
+
+
+h1 {
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+}
+p {
+    max-width: 400px;
+    letter-spacing: 0.5px;
+    color: #569cfa;
+}
+
+.main-content {
+    margin-bottom: 20px;
+}
+
+.accent-element {
+    color: var(--accent-color);
+}
+
+/* make sidebar nav vertical */
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.link {
+  color: #03e9f4;
+}
+
+.link:hover {
+  color: #fff;
+}
