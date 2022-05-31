@@ -17,7 +17,7 @@
       {% endif %}
     </h5>
     <p class="card-text">{{ quiz.summary }}</p>
-    <a href="{% url 'quiz_slug' quiz.slug %}" class="btn btn-primary mb-3">Играть</a>
+    <a href="{% url 'quiz_page' quiz.slug %}" class="btn btn-primary mb-3">Играть</a>
     <p class="card-text"><small class="text-muted">{{ quiz.updated_at|date:"d.m.Y" }}</small></p>
   </div>
   {% endfor %}

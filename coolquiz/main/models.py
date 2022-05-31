@@ -1,3 +1,4 @@
+from bdb import effective
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -69,15 +70,19 @@ class Take(models.Model):
         ('paused', 'PAUSED'),
         ('finished', 'FINISHED'),
     )
-    user_id = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
-    quiz_id = models.ForeignKey(Quiz, on_delete=models.PROTECT, null=True)
-    status = models.CharField(max_length=8, choices=STATUS_CHOICES)
-    score = models.PositiveSmallIntegerField(default=0)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    quiz_id = models.ForeignKey(Quiz, on_delete=models.CASCADE, null=True)
+    user_score = models.PositiveSmallIntegerField(default=0)
+    total_score = models.PositiveSmallIntegerField(default=0)
+    percent_efficiency = models.PositiveSmallIntegerField(default=0)
     started_at = models.DateTimeField(auto_now_add=True)
     finished_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return f"{self.pk}. {self.user_id}: {self.quiz_id.title}"
+
 
 class TakeAnswer(models.Model):
-    take_id = models.ForeignKey(Take, on_delete=models.PROTECT, null=True)
-    answer_id = models.ForeignKey(QuizAnswer, on_delete=models.PROTECT, null=True)
-    selected = models.BooleanField(default=False)
+    take_id = models.ForeignKey(Take, on_delete=models.CASCADE, null=True)
+    answer_id = models.ForeignKey(QuizAnswer, on_delete=models.CASCADE, null=True)
+    question_id = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE, null=True)

@@ -14,7 +14,7 @@
                 <ul class="navbar-nav ms-auto">
                     {% if user %}
                     <li class="nav-item">
-                        <a disabled class="nav-link" href="">Привет, {{ user }}</a>
+                        <a disabled class="nav-link" href="{% url 'profile' user %}">Привет, {{ user }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Выйти</a>

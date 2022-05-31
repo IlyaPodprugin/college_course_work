@@ -12,14 +12,19 @@
             <span class="badge bg-danger">{{ quiz.level_id.level_title }}</span>
             {% endif %}
         </h2>
-        <h5 class="card-title">Ваш результат: {{ score }}/{{ total }}</h5>
-        {% for question in questions %}
+        <h5 class="card-title">Ваш результат: {{ user_score }}/{{ total_score }} ({{ percent_efficiency }}%)</h5>
+        {% for question, chosen_answer in questions %}
         <h5 class="card-title mt-4">{{ question.content }}</h5>
         {% for answer in answers %}
         {% if answer.question_id.id == question.id %}
         <div class="form-check ms-4">
             <input class="form-check-input" value="{{ answer.id }}" type="radio" name="{{ question.id }}" id="{{ question.id }}{{ answer.id }}" {% if answer.correct %} checked {% endif %}>
-            <label class="form-check-label" for="{{ question.id }}{{ answer.id }}" {% if answer.correct %} style="color: #6FEF59; font-weight: bold" {% endif %}>
+            <label class="form-check-label" for="{{ question.id }}{{ answer.id }}" 
+            {% if answer.correct %} 
+                style="color: #aaf28b; font-weight: bold"
+            {% elif answer.id == chosen_answer.answer_id.id %}
+                style="color: #ed4628; font-weight: bold"
+            {% endif %}>
                 {{ answer.content }}
             </label>
         </div>
